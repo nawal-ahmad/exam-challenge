@@ -10,8 +10,11 @@ Hint: You can use the array function reverse
 ------------------------------------------------------------------------------------------------ */
 
 const reverseString = (str) => {
-    // Solution code here...
-
+  // Solution code here...
+  const splitString = str.split('');
+  const reverseArray = splitString.reverse();
+  const joinArray = reverseArray.join('');
+  return joinArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -30,7 +33,10 @@ Output: ['a','b','c','d','e','f']
 ------------------------------------------------------------------------------------------------ */
 
 const addInTheMiddle = (arr, val) => {
-    // Solution code here...
+  // Solution code here...
+  const index = Math.ceil(arr.length / 2);
+  const newArr = arr.splice(index, 0, val);
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -45,15 +51,24 @@ Run your tests from the console: jest challenges-02.test.js
 ------------------------------------------------------------------------------------------------ */
 
 describe('Testing challenge 1', () => {
-    test('It should return the reversed version of the input string', () => {
-        expect(reverseString('Hello World')).toStrictEqual('dlroW olleH');
-        expect(reverseString('rubber ducks dont quack !')).toStrictEqual('! kcauq tnod skcud rebbur');
-    });
+  test('It should return the reversed version of the input string', () => {
+    expect(reverseString('Hello World')).toStrictEqual('dlroW olleH');
+    expect(reverseString('rubber ducks dont quack !')).toStrictEqual(
+      '! kcauq tnod skcud rebbur'
+    );
+  });
 });
 
 describe('Testing challenge 2', () => {
-    test('It should return the array with the provided element added in the middle', () => {
-        expect(addInTheMiddle([1, 2, 4, 5], 3)).toStrictEqual([1, 2, 3, 4, 5]);
-        expect(addInTheMiddle(['a', 'b', 'c', 'e', 'f'], 'd')).toStrictEqual(['a', 'b', 'c', 'd', 'e', 'f']);
-    });
+  test('It should return the array with the provided element added in the middle', () => {
+    expect(addInTheMiddle([1, 2, 4, 5], 3)).toStrictEqual([1, 2, 3, 4, 5]);
+    expect(addInTheMiddle(['a', 'b', 'c', 'e', 'f'], 'd')).toStrictEqual([
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+    ]);
+  });
 });
